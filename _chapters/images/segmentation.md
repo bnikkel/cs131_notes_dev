@@ -1,4 +1,8 @@
-
+---
+title: Segmentation
+keywords: (segmentation, clustering, gestalt)
+order: 11 # Lecture number 13 for 2021
+---
 # CS131 Lecture 13 
 ### Stanford University
 Brad Nikkel, Constance Horng, Chris Tan, Yutian Cai, Jialin Zhuo 
