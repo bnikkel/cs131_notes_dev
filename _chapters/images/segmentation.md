@@ -1,13 +1,7 @@
----
-title: Segmentation
-keywords: (segmentation, clustering, Gestalt, graph)
-order: 13 # Lecture number for 2021
----
 
-
-# <div align="center"> CS131 Lecture 13 </div>
-### <div align="center"> Stanford University </div>
-<div align="center"> Brad Nikkel, Constance Horng, Chris Tan, Yutian Cai, Jialin Zhuo </div>
+# CS131 Lecture 13 
+### Stanford University
+Brad Nikkel, Constance Horng, Chris Tan, Yutian Cai, Jialin Zhuo 
 
 
 # 1 Introduction to Segmentation and Clustering
@@ -115,12 +109,12 @@ Clustering is an unsupervised learning method where we want to group items $x_1,
 There are two main measures of distance when using feature vectors to represent data: euclidean distance and cosine similarity. We define $x$ and $x'$ as two objects from the universe of possible objects. Then, the distance (similarity) between $x$ and $x'$ can be denoted as $sim(x, x')$.
 
 For euclidean distance, we have:
-# <div align="center"> $dist(x, x') = \sqrt{\Sigma(x_i - x'_i)^2}$  </div>
+$$dist(x, x') = \sqrt{\Sigma(x_i - x'_i)^2}$$  
 
 For cosine similarity, we have:
-# <div align="center"> $sim(x, x') = cos(\theta)$  </div>
-# <div align="center"> $= \frac{x^Tx'}{||x|| \cdot ||x'||}$  </div>
-# <div align="center"> $= \frac{x^Tx'}{\sqrt{x^Tx}\sqrt{x'^Tx'}}$  </div>
+$$sim(x, x') = cos(\theta)$$  
+$$= \frac{x^Tx'}{||x|| \cdot ||x'||}$$  
+$$= \frac{x^Tx'}{\sqrt{x^Tx}\sqrt{x'^Tx'}}$$  
 
 **3.2 Desirable Properties of Clustering Algorithms**
 
@@ -171,9 +165,9 @@ There are three main ways to measure distances between clusters: single link, co
   <figcaption align="center">Figure 10: Complete link measurement of nearest clusters (src: Lecture 13.3)</figcaption>
 </figure>
 
-2. Average link 
+3. Average link 
 
-  $d(C_i, C_j) = \frac{\Sigma_{x \in C_i, x' \in C_j}d(x, x')}{|C_i|\cdot|C_j|}$
+  $$d(C_i, C_j) = \frac{\Sigma_{x \in C_i, x' \in C_j}d(x, x')}{|C_i|\cdot|C_j|}$$
 
   Average link utilizes the average distance between items, resulting in an algorithm that is somewhere between single link and complete link. Average link is more robust against noise because for single and complete link, outliers can disturb the computed distances between clusters.
   <figure>
@@ -239,7 +233,7 @@ The basic concept behind graph-based clustering is that we can model images as g
 3. Thet set $S$ is a segmentation of graph $G$ where $G' = (V, E')$ and $E' \subset E$.  
 4. Segmentation set $S$ divides graph $G$ into graph $G'$ such that graph $G'$ contains the set of distinct clusters $C$.
 
-**4.3 Predicate for Segmentation**
+**4.4 Predicate for Segmentation**
 
 <figure>
   <center><img src="https://drive.google.com/uc?id=1X8Q2Qy5i0G6xStxRI3OIbMKOpRyJJX-P" width="400"></center>
@@ -267,21 +261,20 @@ $$in(C_1, C_2)= \min_{C \in \{C_1, C-2\}} \left[ \max_{v_i,v_j \in C} \left[ w(v
 
 5. The intuition behind this is that if the external difference between clusters $C_1$ and $C_2$ turns out to be smaller than the internal distance of a single cluster, then we should merge clusters $C_1$ and $C_2$.
 
-6. The fraction $\frac{k}{|C|}$ is the threshold difference between components and the internal nodes in a component. If we set $k$ to be large, our threshold will favor large (and fewer) objects. A smaller $k$ wil make the threshold favor smaller (and more) clusters.
+6. The fraction $\frac{k}{\|C\|}$ is the threshold difference between components and the internal nodes in a component. If we set $k$ to be large, our threshold will favor large (and fewer) objects. A smaller $k$ wil make the threshold favor smaller (and more) clusters.
 
 <figure>
   <center><img src="https://drive.google.com/uc?id=1dfvGtPwwxfTffbrMFKmP6IpgYVpuEAke" width="400"></center>
   <figcaption align="center">Figure 17: Example of effects small and large k (src: Lecture 13.4)</figcaption>
 </figure>
 
-**4.4 Performance**
+**4.5 Performance**
 1. Modeling an image as a graph allows us to acheive greedy algorithm time complexity of $O(n \log n)$ where $n$ is the number of pixels in the image.
 
 <figure>
   <center><img src="https://drive.google.com/uc?id=1PkTcHWKplO7hywnrj4A_4onpxv3d6JaV" width="400"></center>
   <figcaption align="center">Figure 18: Examples of graph-clustered-images (src: Lecture 13.4)</figcaption>
 </figure>
-
 
 
 
