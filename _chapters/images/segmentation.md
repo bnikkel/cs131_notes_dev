@@ -3,9 +3,15 @@ title: Segmentation
 keywords: (segmentation, clustering, gestalt)
 order: 11 # Lecture number 13 for 2021
 ---
-# CS131 Lecture 13 
-### Stanford University
+<center>
+<h1>
+CS131 Lecture 13 
+</h1>
+<h2>
+Stanford University
+</h2>
 Brad Nikkel, Constance Horng, Chris Tan, Yutian Cai, Jialin Zhuo 
+</center>
 
 
 # 1 Introduction to Segmentation and Clustering
@@ -113,12 +119,20 @@ Clustering is an unsupervised learning method where we want to group items $x_1,
 There are two main measures of distance when using feature vectors to represent data: euclidean distance and cosine similarity. We define $x$ and $x'$ as two objects from the universe of possible objects. Then, the distance (similarity) between $x$ and $x'$ can be denoted as $sim(x, x')$.
 
 For euclidean distance, we have:
+
 $$dist(x, x') = \sqrt{\Sigma(x_i - x'_i)^2}$$  
 
 For cosine similarity, we have:
-$$sim(x, x') = cos(\theta)$$  
-$$= \frac{x^Tx'}{||x|| \cdot ||x'||}$$  
-$$= \frac{x^Tx'}{\sqrt{x^Tx}\sqrt{x'^Tx'}}$$  
+
+<center>
+$sim(x, x') $  
+
+$= \cos(\theta)$
+
+$= \frac{x^Tx'}{||x|| \cdot ||x'||}$
+
+$= \frac{x^Tx'}{\sqrt{x^Tx}\sqrt{x'^Tx'}}$ 
+</center>
 
 **3.2 Desirable Properties of Clustering Algorithms**
 
@@ -149,9 +163,9 @@ Since agglomerative clustering eventually creates a dendogram (a tree), we can u
 **3.5 Different measures of nearest clusters**
 
 There are three main ways to measure distances between clusters: single link, complete link, and average link.
-1. Single link (single-linkage)
+- Single link (single-linkage)
 
-  $d(C_i, C_j) = min_{x \in C_i, x' \in C_j} d(x, x')$
+  $$d(C_i, C_j) = min_{x \in C_i, x' \in C_j} d(x, x')$$
 
   This method is equivalent to the minimum spanning tree algorithm. Once the distance between clusters is above the threshold that we set, we can stop clustering. The single link algorithm tends to produce long, skinny clusters.
   <figure>
@@ -159,9 +173,9 @@ There are three main ways to measure distances between clusters: single link, co
   <figcaption align="center">Figure 9: Single link measurement of nearest clusters (src: Lecture 13.3)</figcaption>
 </figure>
 
-2. Complete link (complete-linkage)
+- Complete link (complete-linkage)
 
-  $d(C_i, C_j) = max_{x \in C_i, x' \in C_j} d(x, x')$
+  $$d(C_i, C_j) = max_{x \in C_i, x' \in C_j} d(x, x')$$
 
   Unlike single link, complete link utilizes the maximum distance between points in two clusters. Clusters resulting from this algorithm tend to be compact and roughly equal in diameter.
   <figure>
@@ -169,7 +183,7 @@ There are three main ways to measure distances between clusters: single link, co
   <figcaption align="center">Figure 10: Complete link measurement of nearest clusters (src: Lecture 13.3)</figcaption>
 </figure>
 
-3. Average link 
+- Average link 
 
   $$d(C_i, C_j) = \frac{\Sigma_{x \in C_i, x' \in C_j}d(x, x')}{|C_i|\cdot|C_j|}$$
 
@@ -207,7 +221,6 @@ Drawbacks of agglomerative clustering:
   <figcaption align="center">Figure 13: Segmented image of original photo above (src: Lecture 13.4)</figcaption>
 </figure>
 
-
 Graph-based segmentaton is similar to aglomerative clustering (part 3). It is an image segmentation method introduced in 2004 (prior to many deep learning algorithms) and has remained popular due to its simplicity and ease of implementation.
 
 Graph-based clustering for image clustering was first introduced by Felzenszwalb and Huttenlocher in their paper "Efficient Graph-Based Image Segmentation."
@@ -218,7 +231,6 @@ Graph-based clustering for image clustering was first introduced by Felzenszwalb
   <center><img src="https://drive.google.com/uc?id=1ZIAg_GBXTInOspZEK7-2Upmi4Ny0UHGH" width="400"></center>
   <figcaption align="center">Figure 14: Example of eight neighboring pixels modeled as a graph (src: Lecture 13.4)</figcaption>
 </figure>
-
 
 The basic concept behind graph-based clustering is that we can model images as graphs by:
 1. Treating a pixel in an image as connected to its eight neighboring pixels, where weights represent differing intensities.
@@ -244,7 +256,7 @@ The basic concept behind graph-based clustering is that we can model images as g
   <figcaption align="center">Figure 16: Example difference and internal difference (src: Lecture 13.4)</figcaption>
 </figure>
 
-1. First we define a predicate $D$, which determines if a boundary for segmentation exists. This decides whether two candidate clusters are actually seperate or the same (and thus whether or not we should merge the two candidates). We use the below piecewise function to determine whether or not to merge two candidate clusters:
+- First we define a predicate $D$, which determines if a boundary for segmentation exists. This decides whether two candidate clusters are actually seperate or the same (and thus whether or not we should merge the two candidates). We use the below piecewise function to determine whether or not to merge two candidate clusters:
 
 $$ Merge(C_1, C_2)=   \left\{
 \begin{array}{ll}
@@ -253,19 +265,19 @@ $$ Merge(C_1, C_2)=   \left\{
 \end{array} 
 \right.  $$
 
-2. Above, $dif(C_1, C_2)$ is the difference between any two clusters $C_1$ and $C_2$ (i.e. how different is cluster $C_1$ from $C_2$). On the other hand, $in(C_1, C_2)$ is the difference between pixels within a candidate cluster $C_1$ and the pixels within a candidate cluster $C_2$. 
+- Above, $dif(C_1, C_2)$ is the difference between any two clusters $C_1$ and $C_2$ (i.e. how different is cluster $C_1$ from $C_2$). On the other hand, $in(C_1, C_2)$ is the difference between pixels within a candidate cluster $C_1$ and the pixels within a candidate cluster $C_2$. 
 
 $$dif(C_1, C_2) = \min_{v_i\in C_1, v_j \in C_2, (C_1, C_2) \in E} w(v_i, v_j)$$.
 
-3. Above, we see that the minimum weight edge connnecting a node $v_i$ in cluster $C_1$ with node $v_j$ in cluster $C_2$ is the difference between components $C_1$ and $C_2$.
+- Above, we see that the minimum weight edge connnecting a node $v_i$ in cluster $C_1$ with node $v_j$ in cluster $C_2$ is the difference between components $C_1$ and $C_2$.
 
 $$in(C_1, C_2)= \min_{C \in \{C_1, C-2\}} \left[ \max_{v_i,v_j \in C} \left[ w(v_i,v_j) + \frac{k}{|C|} \right] \right]$$ 
 
-4. Above, we see that the internal difference, $in(C_1, C_2)$, takes the maximum weight edge distance connecting any two iternal points within each cluster $C_1$ and $C_2$. This corresponds to the most different pair of points within each respective cluster candidate $C_1$ and $C_2$. We then we take the minimum of these two internal maximums.
+- Above, we see that the internal difference, $in(C_1, C_2)$, takes the maximum weight edge distance connecting any two iternal points within each cluster $C_1$ and $C_2$. This corresponds to the most different pair of points within each respective cluster candidate $C_1$ and $C_2$. We then we take the minimum of these two internal maximums.
 
-5. The intuition behind this is that if the external difference between clusters $C_1$ and $C_2$ turns out to be smaller than the internal distance of a single cluster, then we should merge clusters $C_1$ and $C_2$.
+- The intuition behind this is that if the external difference between clusters $C_1$ and $C_2$ turns out to be smaller than the internal distance of a single cluster, then we should merge clusters $C_1$ and $C_2$.
 
-6. The fraction $\frac{k}{\|C\|}$ is the threshold difference between components and the internal nodes in a component. If we set $k$ to be large, our threshold will favor large (and fewer) objects. A smaller $k$ wil make the threshold favor smaller (and more) clusters.
+- The fraction $\frac{k}{\|C\|}$ is the threshold difference between components and the internal nodes in a component. If we set $k$ to be large, our threshold will favor large (and fewer) objects. A smaller $k$ wil make the threshold favor smaller (and more) clusters.
 
 <figure>
   <center><img src="https://drive.google.com/uc?id=1dfvGtPwwxfTffbrMFKmP6IpgYVpuEAke" width="400"></center>
@@ -279,4 +291,11 @@ $$in(C_1, C_2)= \min_{C \in \{C_1, C-2\}} \left[ \max_{v_i,v_j \in C} \left[ w(v
   <center><img src="https://drive.google.com/uc?id=1PkTcHWKplO7hywnrj4A_4onpxv3d6JaV" width="400"></center>
   <figcaption align="center">Figure 18: Examples of graph-clustered-images (src: Lecture 13.4)</figcaption>
 </figure>
+
+
+
+
+
+
+
 
