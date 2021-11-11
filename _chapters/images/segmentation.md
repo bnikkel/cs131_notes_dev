@@ -276,8 +276,3 @@ $$in(C_1, C_2)= \min_{C \in \{C_1, C-2\}} \left[ \max_{v_i,v_j \in C} \left[ w(v
   <figcaption align="center">Figure 18: Examples of graph-clustered-images (src: Lecture 13.4)</figcaption>
 </figure>
 
-
-
-
-
-
