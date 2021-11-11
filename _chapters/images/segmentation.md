@@ -1,6 +1,6 @@
 ---
 title: Segmentation
-keywords: (insert comma-separated keywords here)
+keywords: (segmentation, clustering, Gestalt, graph)
 order: 13 # Lecture number for 2021
 ---
 
