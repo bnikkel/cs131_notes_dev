@@ -3,15 +3,10 @@ title: Segmentation
 keywords: (segmentation, clustering, gestalt)
 order: 11 # Lecture number 13 for 2021
 ---
-<center>
 <h1>
 CS131 Lecture 13 
 </h1>
-<h2>
-Stanford University
-</h2>
 Brad Nikkel, Constance Horng, Chris Tan, Yutian Cai, Jialin Zhuo 
-</center>
 
 
 # 1 Introduction to Segmentation and Clustering
@@ -168,7 +163,7 @@ There are three main ways to measure distances between clusters: single link, co
   $$d(C_i, C_j) = min_{x \in C_i, x' \in C_j} d(x, x')$$
 
   This method is equivalent to the minimum spanning tree algorithm. Once the distance between clusters is above the threshold that we set, we can stop clustering. The single link algorithm tends to produce long, skinny clusters.
-  <figure>
+<figure>
   <center><img src="https://drive.google.com/uc?id=1RaSf12j4HNhost8g0EYvAlKyaBEW2-CD" width="400"></center>
   <figcaption align="center">Figure 9: Single link measurement of nearest clusters (src: Lecture 13.3)</figcaption>
 </figure>
@@ -178,7 +173,7 @@ There are three main ways to measure distances between clusters: single link, co
   $$d(C_i, C_j) = max_{x \in C_i, x' \in C_j} d(x, x')$$
 
   Unlike single link, complete link utilizes the maximum distance between points in two clusters. Clusters resulting from this algorithm tend to be compact and roughly equal in diameter.
-  <figure>
+<figure>
   <center><img src="https://drive.google.com/uc?id=15mOHYDvWXe3vDtIDnAJAuxR5CZ6OzZv-" width="400"></center>
   <figcaption align="center">Figure 10: Complete link measurement of nearest clusters (src: Lecture 13.3)</figcaption>
 </figure>
@@ -188,7 +183,7 @@ There are three main ways to measure distances between clusters: single link, co
   $$d(C_i, C_j) = \frac{\Sigma_{x \in C_i, x' \in C_j}d(x, x')}{|C_i|\cdot|C_j|}$$
 
   Average link utilizes the average distance between items, resulting in an algorithm that is somewhere between single link and complete link. Average link is more robust against noise because for single and complete link, outliers can disturb the computed distances between clusters.
-  <figure>
+<figure>
   <center><img src="https://drive.google.com/uc?id=1I_ImgW2NII7JjvuSCsScOcqVTAYMKJxi" width="400"></center>
   <figcaption align="center">Figure 11: Average link measurement of nearest clusters (src: Lecture 13.3)</figcaption>
 </figure>
@@ -291,6 +286,7 @@ $$in(C_1, C_2)= \min_{C \in \{C_1, C-2\}} \left[ \max_{v_i,v_j \in C} \left[ w(v
   <center><img src="https://drive.google.com/uc?id=1PkTcHWKplO7hywnrj4A_4onpxv3d6JaV" width="400"></center>
   <figcaption align="center">Figure 18: Examples of graph-clustered-images (src: Lecture 13.4)</figcaption>
 </figure>
+
 
 
 
