@@ -8,7 +8,6 @@ CS131 Lecture 13
 </h1>
 Brad Nikkel, Constance Horng, Chris Tan, Yutian Cai, Jialin Zhuo 
 
-
 # 1 Introduction to Segmentation and Clustering
 **1.1 Overview of Segmentation**
 
@@ -262,7 +261,7 @@ $$ Merge(C_1, C_2)=   \left\{
 
 - Above, $dif(C_1, C_2)$ is the difference between any two clusters $C_1$ and $C_2$ (i.e. how different is cluster $C_1$ from $C_2$). On the other hand, $in(C_1, C_2)$ is the difference between pixels within a candidate cluster $C_1$ and the pixels within a candidate cluster $C_2$. 
 
-$$dif(C_1, C_2) = \min_{v_i\in C_1, v_j \in C_2, (C_1, C_2) \in E} w(v_i, v_j)$$.
+$$dif(C_1,C_2) = \min_{v_i\in C_1, v_j \in C_2, (C_1, C_2) \in E} w(v_i, v_j)$$
 
 - Above, we see that the minimum weight edge connnecting a node $v_i$ in cluster $C_1$ with node $v_j$ in cluster $C_2$ is the difference between components $C_1$ and $C_2$.
 
@@ -280,7 +279,7 @@ $$in(C_1, C_2)= \min_{C \in \{C_1, C-2\}} \left[ \max_{v_i,v_j \in C} \left[ w(v
 </figure>
 
 **4.5 Performance**
-1. Modeling an image as a graph allows us to acheive greedy algorithm time complexity of $O(n \log n)$ where $n$ is the number of pixels in the image.
+1. In practice, edges are chosen are limited to the top 10 nearest neighbors in feature space. This then allows us use our graph model with a greedy algorithm to achieve time complexity of $O(n \log n)$ where $n$ is the number of pixels in the image.
 
 <figure>
   <center><img src="https://drive.google.com/uc?id=1PkTcHWKplO7hywnrj4A_4onpxv3d6JaV" width="400"></center>
